@@ -3,7 +3,10 @@
     "description": "A server side calculated field for Laravel Nova",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "field",
+        "calculated",
+        "server-side"
     ],
     "license": "MIT",
     "require": {
