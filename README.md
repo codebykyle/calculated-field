@@ -4,6 +4,7 @@ This package contains two Nova fields required to do server-side calculations fr
 The user can optionally override the calculated value on the form.
 
 For a detailed write-up of the how-and-why of this field, please visit:
+
 https://codebykyle.com/blog/laravel-nova-custom-calculated-field
 
 ## Installation
