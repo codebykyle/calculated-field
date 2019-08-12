@@ -1,20 +1,30 @@
 # A Server- Side Calculated Field For Laravel Nova
 
 This package contains two Nova fields required to do server-side calculations from the Nova client. 
-The user can optionally override the calculated value on the form
+The user can optionally override the calculated value on the form.
 
-## Example
+For a detailed write-up of the how-and-why of this field, please visit:
+https://codebykyle.com/blog/laravel-nova-custom-calculated-field
+
+## Installation
+
+Install the package via composer:
+
+`composer require codebykyle/calculated-field`
+
+
+### Example
 For example:
-### As a number
+#### As a number
 ![Calculated Number Field](https://cbk-website.s3.amazonaws.com/calculated-field/number_calc_field.gif "Calculated Number Field")
 
-### As a string:
+#### As a string:
 ![Calculated String Field](https://cbk-website.s3.amazonaws.com/calculated-field/string_calc_field.gif "Calculated String Field")
 
-#### Default
+##### Default
 The Listener field will by default sum all numbers passed to it
 
-## Usage
+### Usage
 ```php
 <?php
 
