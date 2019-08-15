@@ -1,4 +1,4 @@
-# A Server- Side Calculated Field For Laravel Nova
+# A Server-Side Calculated Field For Laravel Nova
 
 This package contains two Nova fields required to do server-side calculations from the Nova client. 
 The user can optionally override the calculated value on the form.
