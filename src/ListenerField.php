@@ -44,6 +44,17 @@ class ListenerField extends Field
     }
 
     /**
+     * Allows us to set the format of the number according to numeral.js
+     * @param $broadcastChannel
+     */
+    public function numberFormat($format)
+    {
+        return $this->withMeta([
+            'numberFormat' => $format
+        ]);
+    }
+
+    /**
      * The channel that the client side component listens to
      * @param $channel
      * @return $this

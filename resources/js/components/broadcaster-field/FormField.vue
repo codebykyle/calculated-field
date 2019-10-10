@@ -7,7 +7,7 @@
         class="w-full form-control form-input form-input-bordered"
         :class="errorClasses"
         :placeholder="field.name"
-        :value="value"
+        :value="value | moneyFormat(field.numberFormat)"
         @input="setFieldAndMessage"
       />
     </template>
@@ -16,6 +16,7 @@
 
 <script>
 import { FormField, HandlesValidationErrors } from "laravel-nova";
+import numeral from "numeral";
 
 export default {
   mixins: [FormField, HandlesValidationErrors],
@@ -58,6 +59,14 @@ export default {
      */
     handleChange(value) {
       this.value = value;
+    }
+  },
+  filters: {
+    moneyFormat(number, format) {
+      if (!format) {
+        return number;
+      }
+      return numeral(number).format(format);
     }
   }
 };

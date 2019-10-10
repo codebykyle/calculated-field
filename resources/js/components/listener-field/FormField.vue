@@ -8,7 +8,8 @@
           class="w-full form-control form-input form-input-bordered"
           :class="errorClasses"
           :placeholder="field.name"
-          v-model="value"
+          :value="value | moneyFormat(field.numberFormat)"
+          @input="setFieldAndMessage"
         />
 
         <div
@@ -45,6 +46,7 @@
 <script>
 import { FormField, HandlesValidationErrors } from "laravel-nova";
 import _ from "lodash";
+import numeral from "numeral";
 
 export default {
   mixins: [FormField, HandlesValidationErrors],
@@ -65,6 +67,22 @@ export default {
     messageReceived(message) {
       this.field_values[message.field_name] = message.value;
       this.calculateValue();
+    },
+
+    setFieldAndMessage(el) {
+      const rawValue = el.target.value;
+      let parsedValue = rawValue;
+
+      if (this.field.type === "number") {
+        parsedValue = Number(rawValue);
+      }
+
+      Nova.$emit(this.field.broadcastTo, {
+        field_name: this.field.attribute,
+        value: parsedValue
+      });
+
+      this.value = parsedValue;
     },
 
     calculateValue: _.debounce(function() {
@@ -103,6 +121,14 @@ export default {
      */
     handleChange(value) {
       this.value = value;
+    }
+  },
+  filters: {
+    moneyFormat(number, format) {
+      if (!format) {
+        return number;
+      }
+      return numeral(number).format(format);
     }
   }
 };
