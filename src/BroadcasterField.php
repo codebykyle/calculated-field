@@ -51,6 +51,18 @@ class BroadcasterField extends Field
     }
 
     /**
+     * Allows us to set the format of the number according to numeral.js
+     * @param $broadcastChannel
+     * @return Element
+     */
+    public function numberFormat($format) : Element
+    {
+        return $this->withMeta([
+            'numberFormat' => $format
+        ]);
+    }
+
+    /**
      * Tells the client side component which channel to broadcast on
      * @param $broadcastChannel
      * @return Element
@@ -61,4 +73,5 @@ class BroadcasterField extends Field
             'broadcastTo' => $broadcastChannel
         ]);
     }
+
 }
