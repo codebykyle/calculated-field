@@ -8,6 +8,7 @@
         :class="errorClasses"
         :placeholder="field.name"
         :value="value | moneyFormat(field.numberFormat)"
+        :step="field.step"
         @input="setFieldAndMessage"
       />
     </template>
