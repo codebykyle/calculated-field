@@ -10,6 +10,9 @@
           :placeholder="field.name"
           :value="value | moneyFormat(field.numberFormat)"
           @input="setFieldAndMessage"
+          :disabled="field.readonly"
+          :aria-readonly="field.readonly"
+          :readonly="field.readonly"
         />
 
         <div
@@ -45,7 +48,7 @@
 
 <script>
 import { FormField, HandlesValidationErrors } from "laravel-nova";
-import _ from "lodash";
+import {debounce} from "lodash";
 import numeral from "numeral";
 
 export default {
@@ -85,7 +88,7 @@ export default {
       this.value = parsedValue;
     },
 
-    calculateValue: _.debounce(function() {
+    calculateValue: debounce(function() {
       this.calculating = true;
 
       Nova.request()
