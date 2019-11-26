@@ -74,4 +74,16 @@ class BroadcasterField extends Field
         ]);
     }
 
+    /**
+     * Tells the client side component which channel to broadcast on
+     * @param $broadcastChannel
+     * @return Element
+     */
+    public function initialize():Element
+    {
+        return $this->withMeta([
+            'initialize' => true
+        ]);
+    }
+
 }

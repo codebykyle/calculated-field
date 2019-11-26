@@ -2,13 +2,15 @@
   <default-field :field="field" :errors="errors">
     <template slot="field">
       <input
-        :id="field.name"
+        :id="field.attribute"
         :type="this.field.type"
         class="w-full form-control form-input form-input-bordered"
         :class="errorClasses"
         :placeholder="field.name"
         :value="value | moneyFormat(field.numberFormat)"
         @input="setFieldAndMessage"
+        :min="field.min"
+        :max="field.max"
       />
     </template>
   </default-field>
@@ -25,7 +27,7 @@ export default {
 
   methods: {
     setFieldAndMessage(el) {
-      const rawValue = el.target.value;
+      const rawValue = el ? el.target.value : this.value;
       let parsedValue = rawValue;
 
       if (this.field.type === "number") {
@@ -45,6 +47,9 @@ export default {
      */
     setInitialValue() {
       this.value = this.field.value || "";
+      if(this.field.initialize) {
+        this.setFieldAndMessage()
+      }
     },
 
     /**

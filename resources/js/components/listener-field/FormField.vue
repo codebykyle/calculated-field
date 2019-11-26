@@ -3,7 +3,7 @@
     <template slot="field">
       <div class="relative flex items-stretch">
         <input
-          :id="field.name"
+          :id="field.attribute"
           type="text"
           class="w-full form-control form-input form-input-bordered"
           :class="errorClasses"

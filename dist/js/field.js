@@ -11681,6 +11681,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -11692,7 +11694,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     setFieldAndMessage: function setFieldAndMessage(el) {
-      var rawValue = el.target.value;
+      var rawValue = el ? el.target.value : this.value;
       var parsedValue = rawValue;
 
       if (this.field.type === "number") {
@@ -11713,6 +11715,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
      */
     setInitialValue: function setInitialValue() {
       this.value = this.field.value || "";
+      if (this.field.initialize) {
+        this.setFieldAndMessage();
+      }
     },
 
 
@@ -11758,9 +11763,11 @@ var render = function() {
           staticClass: "w-full form-control form-input form-input-bordered",
           class: _vm.errorClasses,
           attrs: {
-            id: _vm.field.name,
+            id: _vm.field.attribute,
             type: this.field.type,
-            placeholder: _vm.field.name
+            placeholder: _vm.field.name,
+            min: _vm.field.min,
+            max: _vm.field.max
           },
           domProps: {
             value: _vm._f("moneyFormat")(_vm.value, _vm.field.numberFormat)
@@ -29724,7 +29731,7 @@ var render = function() {
             staticClass: "w-full form-control form-input form-input-bordered",
             class: _vm.errorClasses,
             attrs: {
-              id: _vm.field.name,
+              id: _vm.field.attribute,
               type: "text",
               placeholder: _vm.field.name,
               disabled: _vm.field.readonly,
