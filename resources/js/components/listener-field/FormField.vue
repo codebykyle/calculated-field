@@ -58,7 +58,7 @@ export default {
 
   created() {
     Nova.$on(this.field.listensTo, this.messageReceived);
-    this.field_values["resourceId"] = parseInt(this.resourceId);
+    this.field_values["resourceId"] = this.resourceId;
   },
 
   data: () => ({
