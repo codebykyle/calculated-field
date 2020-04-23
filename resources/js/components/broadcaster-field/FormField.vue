@@ -3,9 +3,9 @@
     <template slot="field">
       <input
         :id="field.name"
-        :type="this.field.type == 'euro' ? 'number' : this.field.type"
+        :type="this.field.type === 'euro' ? 'number' : this.field.type"
         class="w-full form-control form-input form-input-bordered"
-        :class="errorClasses"
+        :class="errorClasses + this.field.type"
         :format="this.field.type"
         :placeholder="field.name"
         :value="value | moneyFormat(field.numberFormat)"
