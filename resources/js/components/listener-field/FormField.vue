@@ -2,7 +2,7 @@
   <default-field :field="field" :errors="errors">
     <template slot="field">
       <div class="relative flex items-stretch">
-      <div :class="'format'+this.field.type">
+      <div :class="'format-'+this.field.type">
         <input
           :id="field.name"
           :type="field.type"
