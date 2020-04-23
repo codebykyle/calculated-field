@@ -3,7 +3,7 @@
     <template slot="field">
       <input
         :id="field.name"
-        :type="this.field.type"
+        :type="this.field.type === 'euro' ? 'number' :  this.field.type"
         class="w-full form-control form-input form-input-bordered broadcaster"
         :class="errorClasses + this.field.type"
         :format="this.field.type"
