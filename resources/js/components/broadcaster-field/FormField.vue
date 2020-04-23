@@ -1,7 +1,7 @@
 <template>
   <default-field :field="field" :errors="errors">
     <template slot="field">
-      <div :class="'format'+this.field.type">
+      <div :class="'format-'+this.field.type">
         <input
           :id="field.name"
           :type="this.field.type === 'euro' ? 'number' :  this.field.type"
