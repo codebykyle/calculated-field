@@ -4,9 +4,9 @@
       <div class="relative flex items-stretch">
         <input
           :id="field.name"
-          type="text"
+          :type="field.type"
           class="w-full form-control form-input form-input-bordered"
-          :class="errorClasses"
+          :class="errorClasses + field.type"
           :placeholder="field.name"
           :value="value | moneyFormat(field.numberFormat)"
           @input="setFieldAndMessage"
