@@ -3,6 +3,7 @@
 namespace Codebykyle\CalculatedField;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Element;
 use Laravel\Nova\Fields\Field;
 
 class ListenerField extends Field
@@ -13,6 +14,12 @@ class ListenerField extends Field
      * @var string
      */
     public $component = 'listener-field';
+    
+    /**
+     * The type of the field to show on the form
+     * @var string
+     */
+    public $type = 'number';
 
     /**
      * The event this fields listens for
@@ -51,6 +58,19 @@ class ListenerField extends Field
     {
         return $this->withMeta([
             'numberFormat' => $format
+        ]);
+    }
+    
+    /**
+     * Set the type of the field (string, number)
+     *
+     * @param $type
+     * @return Element
+     */
+    public function setType($type) : Element
+    {
+        return $this->withMeta([
+            'type' => $type
         ]);
     }
 
