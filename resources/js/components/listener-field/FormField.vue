@@ -2,15 +2,17 @@
   <default-field :field="field" :errors="errors">
     <template slot="field">
       <div class="relative flex items-stretch">
+      <div :class="'format'+this.field.type">
         <input
           :id="field.name"
           :type="field.type"
           class="w-full form-control form-input form-input-bordered"
-          :class="errorClasses + field.type"
+          :class="errorClasses"
           :placeholder="field.name"
           :value="value | moneyFormat(field.numberFormat)"
           @input="setFieldAndMessage"
         />
+        </div>
 
         <div
           class="absolute rotating text-80 flex justify-center items-center pin-y pin-r mr-3"
