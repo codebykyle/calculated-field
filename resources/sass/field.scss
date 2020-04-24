@@ -1,1 +1,18 @@
 // Nova Tool CSS
+.format-euro{
+
+  &:before {
+    content: 'EUR';
+    color: #6c7880;
+    position: absolute;
+    background: #f3f7fa;
+    padding: 9px 13px;
+    border: 1px solid #bacad6;
+    border-radius: 7px 0 0 7px;
+    /* border-right: 0; */
+    font-size: .875rem;
+  }
+  input{
+    padding-left:4rem;
+  }
+}
