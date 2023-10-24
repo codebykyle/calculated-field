@@ -33,7 +33,8 @@ class BroadcasterField extends Field
 
         $this->withMeta([
             'type' => 'number',
-            'broadcastTo' => 'broadcast-field-input'
+            'broadcastTo' => 'broadcast-field-input',
+            'step'  => 'any'
         ]);
     }
 
@@ -59,6 +60,18 @@ class BroadcasterField extends Field
     {
         return $this->withMeta([
             'numberFormat' => $format
+        ]);
+    }
+
+    /**
+     * Allows us to set the step attribute on the input broadcaster field
+     * @param $broadcastChannel
+     * @return Element
+     */
+    public function setStep($value) : Element
+    {
+        return $this->withMeta([
+            'step' => $value
         ]);
     }
 
